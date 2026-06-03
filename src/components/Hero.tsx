@@ -31,7 +31,7 @@ export default function Hero() {
               Full Stack Developer
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed animate-in fade-in duration-1000 delay-500">
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed animate-in fade-in duration-1000 delay-500">
             Designing and engineering high-performance, beautiful web applications. Specializing in React, Next.js, and modern serverless ecosystems.
           </p>
         </div>
@@ -44,7 +44,7 @@ export default function Hero() {
             </Button>
           </a>
           <a href="#contact">
-            <Button size="lg" variant="outline" className="border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold gap-2 rounded-2xl hover:-translate-y-0.5 transition-all duration-300 px-6 py-6 text-md">
+            <Button size="lg" variant="outline" className="border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-slate-900 dark:text-white font-semibold gap-2 rounded-2xl hover:-translate-y-0.5 transition-all duration-300 px-6 py-6 text-md cursor-pointer">
               <Mail className="h-4 w-4 text-accent-color" /> Let's Connect
             </Button>
           </a>
