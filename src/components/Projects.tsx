@@ -121,9 +121,9 @@ export default function Projects() {
     <section id="projects" className="py-24 px-4 bg-slate-900/20 relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold font-heading bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent mb-4">Featured Work</h2>
-          <div className="w-16 h-1 bg-indigo-500 mx-auto rounded-full mb-4" />
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-extrabold font-heading bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent mb-4">Featured Work</h2>
+          <div className="w-16 h-1 bg-primary mx-auto rounded-full mb-4" />
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             A curated selection of enterprise and client applications engineered for optimal scale and visual layout.
           </p>
         </div>
@@ -134,10 +134,10 @@ export default function Projects() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 text-sm font-medium rounded-xl transition-all duration-300 border ${
+              className={`px-5 py-2 text-sm font-medium rounded-xl transition-all duration-300 border cursor-pointer ${
                 selectedCategory === cat
-                  ? "bg-indigo-600 text-white border-indigo-500 shadow-lg shadow-indigo-600/25"
-                  : "bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-white"
+                  ? "bg-primary text-primary-foreground border-primary/20 shadow-lg shadow-primary/25"
+                  : "bg-black/5 dark:bg-white/5 text-slate-500 dark:text-slate-400 border-black/5 dark:border-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               {cat}
@@ -150,33 +150,33 @@ export default function Projects() {
           {filteredProjects.map((project, index) => (
             <div 
               key={index} 
-              className="glass-card rounded-3xl p-6 border border-white/5 bg-slate-950/20 flex flex-col justify-between hover:scale-[1.01] hover:border-indigo-500/30 transition-all duration-300 group"
+              className="glass-card rounded-3xl p-6 border hover:scale-[1.01] hover:border-primary/30 transition-all duration-300 group flex flex-col justify-between"
             >
               <div>
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider bg-indigo-500/10 px-2.5 py-1 rounded-lg">
+                  <span className="text-xs font-semibold text-accent-color uppercase tracking-wider bg-accent-color/10 px-2.5 py-1 rounded-lg">
                     {project.category}
                   </span>
                   {project.isPrivate && (
-                    <span className="flex items-center gap-1 text-[10px] font-semibold text-slate-400 bg-white/5 px-2.5 py-1 rounded-lg border border-white/5">
-                      <Lock className="w-3 h-3 text-indigo-400" /> Enterprise (Private)
+                    <span className="flex items-center gap-1 text-[10px] font-semibold text-slate-500 dark:text-slate-400 bg-black/5 dark:bg-white/5 px-2.5 py-1 rounded-lg border border-black/5 dark:border-white/5">
+                      <Lock className="w-3 h-3 text-accent-color" /> Enterprise (Private)
                     </span>
                   )}
                 </div>
-                <h3 className="text-2xl font-bold text-white font-heading group-hover:text-indigo-300 transition-colors mb-3">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-heading group-hover:text-accent-color transition-colors mb-3">
                   {project.title}
                 </h3>
-                <p className="text-slate-400 mb-6 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.slice(0, 4).map((tech, techIndex) => (
-                    <Badge key={techIndex} className="bg-white/5 text-slate-300 border-white/5 px-2.5 py-1 rounded-lg text-xs font-medium">
+                    <Badge key={techIndex} className="bg-black/5 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-black/5 dark:border-white/5 px-2.5 py-1 rounded-lg text-xs font-medium shadow-none">
                       {tech}
                     </Badge>
                   ))}
                   {project.tech.length > 4 && (
-                    <Badge className="bg-indigo-500/10 text-indigo-300 border-indigo-500/10 px-2.5 py-1 rounded-lg text-xs font-medium">
+                    <Badge className="bg-accent-color/10 text-accent-color border border-accent-color/10 px-2.5 py-1 rounded-lg text-xs font-medium shadow-none">
                       +{project.tech.length - 4} More
                     </Badge>
                   )}
@@ -199,41 +199,41 @@ export default function Projects() {
       {/* Premium Detail Modal Popup */}
       {activeProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xl animate-in fade-in duration-300">
-          <div className="bg-slate-900 border border-white/10 rounded-3xl max-w-2xl w-full p-6 md:p-8 max-h-[85vh] overflow-y-auto relative shadow-2xl shadow-indigo-500/10 space-y-6">
+          <div className="bg-white dark:bg-slate-900 border border-black/10 dark:border-white/10 rounded-3xl max-w-2xl w-full p-6 md:p-8 max-h-[85vh] overflow-y-auto relative shadow-2xl shadow-indigo-500/10 space-y-6">
             <button
               onClick={() => setActiveProject(null)}
-              className="absolute top-6 right-6 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+              className="absolute top-6 right-6 p-2 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
             >
               <X className="h-5 w-5" />
             </button>
 
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider bg-indigo-500/10 px-2.5 py-1 rounded-lg">
+                <span className="text-xs font-semibold text-accent-color uppercase tracking-wider bg-accent-color/10 px-2.5 py-1 rounded-lg">
                   {activeProject.category}
                 </span>
                 {activeProject.isPrivate && (
-                  <span className="flex items-center gap-1 text-[10px] font-semibold text-slate-400 bg-white/5 px-2.5 py-1 rounded-lg border border-white/5">
-                    <Lock className="w-3 h-3 text-indigo-400" /> Enterprise (Private)
+                  <span className="flex items-center gap-1 text-[10px] font-semibold text-slate-500 dark:text-slate-400 bg-black/5 dark:bg-white/5 px-2.5 py-1 rounded-lg border border-black/5 dark:border-white/5">
+                    <Lock className="w-3 h-3 text-accent-color" /> Enterprise (Private)
                   </span>
                 )}
               </div>
-              <h3 className="text-3xl font-extrabold text-white font-heading mt-2">
+              <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white font-heading mt-2">
                 {activeProject.title}
               </h3>
             </div>
 
             <div className="space-y-4">
-              <p className="text-slate-300 text-md leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-300 text-md leading-relaxed">
                 {activeProject.fullDescription}
               </p>
 
               {activeProject.isPrivate && (
-                <div className="p-4 bg-indigo-500/5 border border-indigo-500/10 rounded-2xl flex items-start gap-3">
-                  <Lock className="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" />
+                <div className="p-4 bg-accent-color/5 border border-accent-color/10 rounded-2xl flex items-start gap-3">
+                  <Lock className="w-5 h-5 text-accent-color mt-0.5 flex-shrink-0" />
                   <div>
-                    <h5 className="text-sm font-bold text-white">Proprietary Enterprise Application</h5>
-                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                    <h5 className="text-sm font-bold text-slate-900 dark:text-white">Proprietary Enterprise Application</h5>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
                       Due to corporate NDAs and data policies, the source code and live environment are confidential. I am happy to discuss system designs, clean code patterns, and my exact contribution during a session or interview.
                     </p>
                   </div>
@@ -241,10 +241,10 @@ export default function Projects() {
               )}
 
               <div>
-                <h4 className="font-bold text-white mb-2 flex items-center gap-1.5"><Code className="w-4 h-4 text-indigo-400" /> Technologies used</h4>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-1.5"><Code className="w-4 h-4 text-accent-color" /> Technologies used</h4>
                 <div className="flex flex-wrap gap-2">
                   {activeProject.tech.map((t, idx) => (
-                    <Badge key={idx} className="bg-white/5 text-slate-300 border-white/5 px-2.5 py-1 rounded-lg text-xs font-medium">
+                    <Badge key={idx} className="bg-black/5 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-black/5 dark:border-white/5 px-2.5 py-1 rounded-lg text-xs font-medium shadow-none">
                       {t}
                     </Badge>
                   ))}
@@ -252,11 +252,11 @@ export default function Projects() {
               </div>
 
               <div>
-                <h4 className="font-bold text-white mb-2 flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> Key Contributions</h4>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> Key Contributions</h4>
                 <ul className="space-y-2 pl-2">
                   {activeProject.features.map((feat, idx) => (
-                    <li key={idx} className="text-slate-400 text-sm flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-2 flex-shrink-0" />
+                    <li key={idx} className="text-slate-600 dark:text-slate-400 text-sm flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent-color mt-2 flex-shrink-0" />
                       {feat}
                     </li>
                   ))}
@@ -265,24 +265,24 @@ export default function Projects() {
 
               <div className="grid md:grid-cols-2 gap-4 pt-2">
                 <div className="p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
-                  <h5 className="text-sm font-bold text-red-400 flex items-center gap-1 mb-1.5">
+                  <h5 className="text-sm font-bold text-red-500 dark:text-red-400 flex items-center gap-1 mb-1.5">
                     <AlertCircle className="w-4 h-4" /> Core Challenge
                   </h5>
-                  <p className="text-xs text-slate-400 leading-relaxed">{activeProject.challenges}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{activeProject.challenges}</p>
                 </div>
                 <div className="p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl">
-                  <h5 className="text-sm font-bold text-emerald-400 flex items-center gap-1 mb-1.5">
+                  <h5 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 mb-1.5">
                     <CheckCircle className="w-4 h-4" /> The Solution
                   </h5>
-                  <p className="text-xs text-slate-400 leading-relaxed">{activeProject.solution}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{activeProject.solution}</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex gap-3 pt-4 border-t border-white/5">
+            <div className="flex gap-3 pt-4 border-t border-black/5 dark:border-white/5">
               <Button 
                 onClick={scrollToContact}
-                className="w-full bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl py-5 font-semibold gap-2"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl py-5 font-semibold gap-2 cursor-pointer shadow-none"
               >
                 Request Architecture Walkthrough
               </Button>

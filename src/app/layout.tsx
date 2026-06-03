@@ -26,9 +26,8 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${plusJakarta.variable} ${outfit.variable} dark scroll-smooth`}
-      style={{ colorScheme: "dark" }}
     >
-      <body className="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen">
+      <body className="bg-background text-foreground font-sans antialiased min-h-screen transition-colors duration-300">
         <div className="relative overflow-hidden min-h-screen radial-bg">
           {children}
         </div>

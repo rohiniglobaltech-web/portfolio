@@ -42,9 +42,9 @@ export default function Skills() {
     <section id="skills" className="py-24 px-4 relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold font-heading bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent mb-4">Technical Stack</h2>
-          <div className="w-16 h-1 bg-purple-500 mx-auto rounded-full mb-4" />
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-extrabold font-heading bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent mb-4">Technical Stack</h2>
+          <div className="w-16 h-1 bg-primary mx-auto rounded-full mb-4" />
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             A list of tools, systems, and languages I use to bring modern digital designs to life.
           </p>
         </div>
@@ -53,10 +53,10 @@ export default function Skills() {
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           <button
             onClick={() => setActiveTab("all")}
-            className={`px-5 py-2 text-sm font-medium rounded-xl transition-all duration-300 border ${
+            className={`px-5 py-2 text-sm font-medium rounded-xl transition-all duration-300 border flex items-center cursor-pointer ${
               activeTab === "all"
-                ? "bg-indigo-600 text-white border-indigo-500 shadow-lg shadow-indigo-600/25"
-                : "bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-white"
+                ? "bg-primary text-primary-foreground border-primary/20 shadow-lg shadow-primary/25"
+                : "bg-black/5 dark:bg-white/5 text-slate-500 dark:text-slate-400 border-black/5 dark:border-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             All Skills
@@ -65,10 +65,10 @@ export default function Skills() {
             <button
               key={category.id}
               onClick={() => setActiveTab(category.id)}
-              className={`px-5 py-2 text-sm font-medium rounded-xl transition-all duration-300 border flex items-center gap-1.5 ${
+              className={`px-5 py-2 text-sm font-medium rounded-xl transition-all duration-300 border flex items-center gap-1.5 cursor-pointer ${
                 activeTab === category.id
-                  ? "bg-indigo-600 text-white border-indigo-500 shadow-lg shadow-indigo-600/25"
-                  : "bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-white"
+                  ? "bg-primary text-primary-foreground border-primary/20 shadow-lg shadow-primary/25"
+                  : "bg-black/5 dark:bg-white/5 text-slate-500 dark:text-slate-400 border-black/5 dark:border-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               {category.icon}
@@ -82,21 +82,21 @@ export default function Skills() {
           {filteredCategories.map((category, index) => (
             <div 
               key={index} 
-              className="glass-card rounded-3xl p-6 border border-white/5 bg-slate-950/20 hover:border-white/10 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all duration-300"
+              className="glass-card rounded-3xl p-6 border hover:border-black/10 dark:hover:border-white/10 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-indigo-500/10 rounded-2xl text-indigo-400">
+                <div className="p-3 bg-accent-color/10 rounded-2xl text-accent-color">
                   {category.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white font-heading">{category.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white font-heading">{category.title}</h3>
               </div>
               <div className="flex flex-wrap gap-2.5">
                 {category.skills.map((skill, skillIndex) => (
                   <Badge 
                     key={skillIndex} 
-                    className="bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-200"
+                    className="bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-black/5 dark:border-white/5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-200 shadow-none"
                   >
-                    <Terminal className="w-3.5 h-3.5 mr-1 text-indigo-400" />
+                    <Terminal className="w-3.5 h-3.5 mr-1 text-accent-color" />
                     {skill}
                   </Badge>
                 ))}

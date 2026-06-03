@@ -33,7 +33,7 @@ export default function About() {
     <section id="about" className="py-24 px-4 relative overflow-hidden bg-slate-900/40">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold font-heading bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent mb-4">About Me</h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold font-heading bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent mb-4">About Me</h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
         </div>
         
