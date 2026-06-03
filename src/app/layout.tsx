@@ -29,7 +29,7 @@ export default function RootLayout({
       style={{ colorScheme: "dark" }}
     >
       <body className="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen">
-        <div className="relative overflow-hidden min-h-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.25),rgba(255,255,255,0))]">
+        <div className="relative overflow-hidden min-h-screen radial-bg">
           {children}
         </div>
       </body>

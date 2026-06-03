@@ -6,8 +6,14 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-16">
       {/* Premium Glow Orbs */}
-      <div className="absolute top-1/4 left-1/10 w-72 h-72 rounded-full bg-indigo-500/15 blur-[120px] pulse-glow-orbs animate-float-slow" />
-      <div className="absolute bottom-1/4 right-1/10 w-96 h-96 rounded-full bg-purple-500/15 blur-[140px] pulse-glow-orbs animate-float-medium" />
+      <div 
+        className="absolute top-1/4 left-1/10 w-72 h-72 rounded-full blur-[120px] pulse-glow-orbs animate-float-slow" 
+        style={{ backgroundColor: 'var(--orb-1)' }}
+      />
+      <div 
+        className="absolute bottom-1/4 right-1/10 w-96 h-96 rounded-full blur-[140px] pulse-glow-orbs animate-float-medium" 
+        style={{ backgroundColor: 'var(--orb-2)' }}
+      />
       
       <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
         {/* Available for Hire Badge */}
@@ -21,7 +27,7 @@ export default function Hero() {
         <div className="space-y-6">
           <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight font-heading animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
             <span className="block text-white">Hi, I'm a</span>
-            <span className="block mt-2 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-glow">
+            <span className="block mt-2 bg-gradient-to-r from-gradient-from via-gradient-via to-gradient-to bg-clip-text text-transparent text-glow">
               Full Stack Developer
             </span>
           </h1>
@@ -33,13 +39,13 @@ export default function Hero() {
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 justify-center items-center pt-2 animate-in fade-in duration-1000 delay-700">
           <a href="#projects">
-            <Button size="lg" className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold gap-2 rounded-2xl shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/40 hover:-translate-y-0.5 transition-all duration-300 px-6 py-6 text-md">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold gap-2 rounded-2xl shadow-lg shadow-primary/30 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 px-6 py-6 text-md">
               View Work <ArrowRight className="h-4 w-4" />
             </Button>
           </a>
           <a href="#contact">
             <Button size="lg" variant="outline" className="border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold gap-2 rounded-2xl hover:-translate-y-0.5 transition-all duration-300 px-6 py-6 text-md">
-              <Mail className="h-4 w-4 text-indigo-400" /> Let's Connect
+              <Mail className="h-4 w-4 text-accent-color" /> Let's Connect
             </Button>
           </a>
         </div>
@@ -78,21 +84,21 @@ export default function Hero() {
             className="p-3 rounded-xl bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:border-white/10 hover:scale-105 transition-all"
             aria-label="Email"
           >
-            <Mail className="w-5 h-5 text-indigo-400" />
+            <Mail className="w-5 h-5 text-accent-color" />
           </a>
         </div>
 
         {/* Tech Badges / Floating bar */}
         <div className="pt-12 flex flex-wrap justify-center gap-6 text-slate-500 text-sm animate-in fade-in duration-1000 delay-900">
-          <span className="flex items-center gap-1.5"><Terminal className="w-4 h-4 text-indigo-400" /> Next.js</span>
-          <span className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-purple-400" /> TailwindCSS</span>
-          <span className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-pink-400" /> TypeScript</span>
+          <span className="flex items-center gap-1.5"><Terminal className="w-4 h-4 text-accent-color" /> Next.js</span>
+          <span className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-accent-secondary" /> TailwindCSS</span>
+          <span className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-accent-tertiary" /> TypeScript</span>
           <span className="flex items-center gap-1.5"><Terminal className="w-4 h-4 text-cyan-400" /> Node.js</span>
         </div>
 
         <div className="pt-12 animate-bounce opacity-50 hover:opacity-100 transition-opacity">
           <a href="#about" aria-label="Scroll Down">
-            <ArrowRight className="h-5 w-5 mx-auto rotate-90 text-indigo-400" />
+            <ArrowRight className="h-5 w-5 mx-auto rotate-90 text-accent-color" />
           </a>
         </div>
       </div>

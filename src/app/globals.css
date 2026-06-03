@@ -46,6 +46,13 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  --color-gradient-from: var(--gradient-from);
+  --color-gradient-via: var(--gradient-via);
+  --color-gradient-to: var(--gradient-to);
+  --color-accent-color: var(--accent-color);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
 }
 
 :root {
@@ -89,6 +96,47 @@
   --border: oklch(0.2 0.04 250);
   --input: oklch(0.2 0.04 250);
   --ring: oklch(0.65 0.22 260);
+
+  --gradient-from: #818cf8;
+  --gradient-via: #c084fc;
+  --gradient-to: #f472b6;
+  --orb-1: rgba(99, 102, 241, 0.15);
+  --orb-2: rgba(168, 85, 247, 0.15);
+  --accent-color: #818cf8;
+  --accent-secondary: #c084fc;
+  --accent-tertiary: #f472b6;
+  --radial-color: rgba(120, 119, 198, 0.25);
+}
+
+.theme-green {
+  --background: oklch(0.08 0.02 145);
+  --foreground: oklch(0.98 0.01 145);
+  --card: oklch(0.11 0.02 145);
+  --card-foreground: oklch(0.98 0.01 145);
+  --popover: oklch(0.11 0.02 145);
+  --popover-foreground: oklch(0.98 0.01 145);
+  --primary: oklch(0.68 0.19 140);
+  --primary-foreground: oklch(0.08 0.02 145);
+  --secondary: oklch(0.15 0.03 145);
+  --secondary-foreground: oklch(0.98 0.01 145);
+  --muted: oklch(0.15 0.03 145);
+  --muted-foreground: oklch(0.7 0.03 145);
+  --accent: oklch(0.18 0.04 140);
+  --accent-foreground: oklch(0.98 0.01 140);
+  --destructive: oklch(0.55 0.2 20);
+  --border: oklch(0.2 0.04 145);
+  --input: oklch(0.2 0.04 145);
+  --ring: oklch(0.68 0.19 140);
+
+  --gradient-from: #34d399;
+  --gradient-via: #4ade80;
+  --gradient-to: #2dd4bf;
+  --orb-1: rgba(16, 185, 129, 0.15);
+  --orb-2: rgba(34, 197, 94, 0.15);
+  --accent-color: #34d399;
+  --accent-secondary: #4ade80;
+  --accent-tertiary: #2dd4bf;
+  --radial-color: rgba(16, 185, 129, 0.2);
 }
 
 @layer base {
@@ -156,5 +204,9 @@
 
 /* Text glow */
 .text-glow {
-  text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  text-shadow: 0 0 20px var(--orb-1);
+}
+
+.radial-bg {
+  background: radial-gradient(ellipse 80% 80% at 50% -20%, var(--radial-color), rgba(255, 255, 255, 0));
 }

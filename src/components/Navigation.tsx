@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Menu, X, Code } from "lucide-react";
+import { Menu, X, Code, Palette } from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -17,6 +17,30 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<"indigo" | "green">("indigo");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("portfolio-theme") as "indigo" | "green";
+    if (savedTheme === "green") {
+      setTheme("green");
+      document.documentElement.classList.add("theme-green");
+    } else {
+      setTheme("indigo");
+      document.documentElement.classList.remove("theme-green");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    if (theme === "indigo") {
+      setTheme("green");
+      document.documentElement.classList.add("theme-green");
+      localStorage.setItem("portfolio-theme", "green");
+    } else {
+      setTheme("indigo");
+      document.documentElement.classList.remove("theme-green");
+      localStorage.setItem("portfolio-theme", "indigo");
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,15 +100,15 @@ export default function Navigation() {
           <div className="flex-shrink-0 flex items-center gap-2">
             <button
               onClick={() => scrollToSection("#hero")}
-              className="text-2xl font-bold font-heading bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent flex items-center gap-1.5"
+              className="text-2xl font-bold font-heading bg-gradient-to-r from-gradient-from via-gradient-via to-gradient-to bg-clip-text text-transparent flex items-center gap-1.5"
             >
-              <Code className="h-6 w-6 text-indigo-400" />
+              <Code className="h-6 w-6 text-accent-color" />
               <span>Rohini</span>
             </button>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center space-x-1">
               {navItems.map((item) => {
                 const isActive = activeSection === item.href.substring(1);
@@ -100,26 +124,48 @@ export default function Navigation() {
                   >
                     {item.name}
                     {isActive && (
-                      <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_#818cf8]" />
+                      <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-accent-color shadow-[0_0_8px_var(--primary)]" />
                     )}
                   </button>
                 );
               })}
             </div>
+            
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-xl border border-white/5 bg-white/5 text-slate-300 hover:text-white transition-all hover:scale-105 flex items-center justify-center gap-1.5 cursor-pointer"
+              aria-label="Toggle Theme"
+              title={`Switch to ${theme === "indigo" ? "Green" : "Indigo"} Theme`}
+            >
+              <Palette className="h-4 w-4 text-accent-color" />
+              <span className="text-xs font-semibold capitalize hidden lg:inline">{theme}</span>
+            </button>
+
             <Button
               size="sm"
               onClick={() => scrollToSection("#contact")}
-              className="bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/30 transition-all rounded-xl"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all rounded-xl cursor-pointer"
             >
               Hire Me
             </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile elements */}
+          <div className="flex md:hidden items-center gap-3">
+            {/* Mobile Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-xl border border-white/5 bg-white/5 text-slate-300 hover:text-white transition-all flex items-center justify-center cursor-pointer"
+              aria-label="Toggle Theme"
+            >
+              <Palette className="h-4.5 w-4.5 text-accent-color" />
+            </button>
+            
+            {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-xl border border-white/5 bg-white/5 text-slate-300 hover:text-white transition-colors"
+              className="p-2 rounded-xl border border-white/5 bg-white/5 text-slate-300 hover:text-white transition-colors cursor-pointer"
             >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5" />
@@ -141,7 +187,7 @@ export default function Navigation() {
                   onClick={() => scrollToSection(item.href)}
                   className={`block w-full text-left px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
                     isActive
-                      ? "text-white bg-indigo-500/10 border-l-2 border-indigo-400"
+                      ? "text-white bg-primary/10 border-l-2 border-primary"
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
@@ -153,7 +199,7 @@ export default function Navigation() {
               <Button
                 size="sm"
                 onClick={() => scrollToSection("#contact")}
-                className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-lg shadow-lg shadow-indigo-600/20"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg shadow-lg shadow-primary/20"
               >
                 Hire Me
               </Button>
