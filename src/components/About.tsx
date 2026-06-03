@@ -34,7 +34,7 @@ export default function About() {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold font-heading bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent mb-4">About Me</h2>
-          <div className="w-16 h-1 bg-indigo-500 mx-auto rounded-full" />
+          <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
         </div>
         
         <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -51,29 +51,29 @@ export default function About() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Badge className="bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 px-3 py-1.5 rounded-xl text-sm font-medium">
-                <Calendar className="h-4 w-4 mr-1.5 text-indigo-400" /> 3+ Years Exp
+              <Badge className="bg-accent-color/10 text-accent-color border border-accent-color/20 px-3 py-1.5 rounded-xl text-sm font-medium">
+                <Calendar className="h-4 w-4 mr-1.5" /> 3+ Years Exp
               </Badge>
-              <Badge className="bg-purple-500/10 text-purple-300 border border-purple-500/20 px-3 py-1.5 rounded-xl text-sm font-medium">
-                <Briefcase className="h-4 w-4 mr-1.5 text-purple-400" /> Full Stack Focused
+              <Badge className="bg-accent-secondary/10 text-accent-secondary border border-accent-secondary/20 px-3 py-1.5 rounded-xl text-sm font-medium">
+                <Briefcase className="h-4 w-4 mr-1.5" /> Full Stack Focused
               </Badge>
-              <Badge className="bg-pink-500/10 text-pink-300 border border-pink-500/20 px-3 py-1.5 rounded-xl text-sm font-medium">
-                <MapPin className="h-4 w-4 mr-1.5 text-pink-400" /> Remote & Hybrid
+              <Badge className="bg-accent-tertiary/10 text-accent-tertiary border border-accent-tertiary/20 px-3 py-1.5 rounded-xl text-sm font-medium">
+                <MapPin className="h-4 w-4 mr-1.5" /> Remote, Hybrid & Onsite
               </Badge>
             </div>
 
             {/* Quick Stats Grid */}
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="glass-card rounded-2xl p-5 border border-white/5 bg-slate-950/20 hover:scale-[1.02] transition-transform duration-300">
-                <div className="p-3 bg-indigo-500/10 w-fit rounded-xl text-indigo-400 mb-4">
+                <div className="p-3 bg-accent-color/10 w-fit rounded-xl text-accent-color mb-4">
                   <Award className="w-5 h-5" />
                 </div>
                 <div className="text-3xl font-extrabold text-white">25+</div>
                 <div className="text-sm text-slate-400 mt-1">Projects Completed</div>
               </div>
               <div className="glass-card rounded-2xl p-5 border border-white/5 bg-slate-950/20 hover:scale-[1.02] transition-transform duration-300">
-                <div className="p-3 bg-pink-500/10 w-fit rounded-xl text-pink-400 mb-4">
-                  <Code className="w-5 h-5" />
+                <div className="p-3 bg-accent-tertiary/10 w-fit rounded-xl text-accent-tertiary mb-4">
+                  <GraduationCap className="w-5 h-5" />
                 </div>
                 <div className="text-3xl font-extrabold text-white">10+</div>
                 <div className="text-sm text-slate-400 mt-1">Tech Frameworks</div>
@@ -89,12 +89,12 @@ export default function About() {
               {timelineData.map((item, index) => (
                 <div key={index} className="relative">
                   {/* Circle Marker */}
-                  <span className="absolute -left-[35px] top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-slate-950 border border-indigo-400 text-indigo-400 shadow-[0_0_8px_rgba(99,102,241,0.5)]">
+                  <span className="absolute -left-[35px] top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-slate-950 border border-accent-color text-accent-color shadow-[0_0_8px_var(--orb-1)]">
                     {item.icon}
                   </span>
                   
                   <div className="glass-card rounded-2xl p-5 border border-white/5 bg-slate-950/20 hover:border-white/10 transition-colors">
-                    <span className="text-xs font-semibold text-indigo-400 tracking-wider uppercase">{item.period}</span>
+                    <span className="text-xs font-semibold text-accent-color tracking-wider uppercase">{item.period}</span>
                     <h4 className="text-lg font-bold text-white mt-1">{item.role}</h4>
                     <span className="text-sm text-slate-400 block font-medium">{item.company}</span>
                     <p className="text-sm text-slate-400 mt-3 leading-relaxed">{item.description}</p>
