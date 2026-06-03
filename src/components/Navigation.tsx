@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Menu, X, Code, Palette } from "lucide-react";
+import { Menu, X, Code, Sun, Moon } from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -17,28 +17,28 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<"indigo" | "green">("indigo");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("portfolio-theme") as "indigo" | "green";
-    if (savedTheme === "green") {
-      setTheme("green");
-      document.documentElement.classList.add("theme-green");
+    const savedTheme = localStorage.getItem("portfolio-theme") as "dark" | "light";
+    if (savedTheme === "light") {
+      setTheme("light");
+      document.documentElement.classList.remove("dark");
     } else {
-      setTheme("indigo");
-      document.documentElement.classList.remove("theme-green");
+      setTheme("dark");
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
   const toggleTheme = () => {
-    if (theme === "indigo") {
-      setTheme("green");
-      document.documentElement.classList.add("theme-green");
-      localStorage.setItem("portfolio-theme", "green");
+    if (theme === "dark") {
+      setTheme("light");
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("portfolio-theme", "light");
     } else {
-      setTheme("indigo");
-      document.documentElement.classList.remove("theme-green");
-      localStorage.setItem("portfolio-theme", "indigo");
+      setTheme("dark");
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("portfolio-theme", "dark");
     }
   };
 
@@ -92,7 +92,7 @@ export default function Navigation() {
       <div
         className={`mx-auto transition-all duration-500 rounded-2xl ${
           isScrolled
-            ? "glass-card border border-white/10 bg-slate-950/60 backdrop-blur-md px-6 py-2 shadow-xl shadow-indigo-950/20"
+            ? "glass-card border border-black/5 dark:border-white/10 bg-white/70 dark:bg-slate-950/60 backdrop-blur-md px-6 py-2 shadow-xl shadow-indigo-950/5 dark:shadow-indigo-950/20"
             : "bg-transparent py-4 border-b border-transparent"
         }`}
       >
@@ -118,8 +118,8 @@ export default function Navigation() {
                     onClick={() => scrollToSection(item.href)}
                     className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
                       isActive
-                        ? "text-white bg-white/5"
-                        : "text-slate-400 hover:text-white"
+                        ? "text-slate-950 dark:text-white bg-slate-950/5 dark:bg-white/5"
+                        : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
                     }`}
                   >
                     {item.name}
@@ -134,12 +134,16 @@ export default function Navigation() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-xl border border-white/5 bg-white/5 text-slate-300 hover:text-white transition-all hover:scale-105 flex items-center justify-center gap-1.5 cursor-pointer"
+              className="p-2 rounded-xl border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-all hover:scale-105 flex items-center justify-center gap-1.5 cursor-pointer"
               aria-label="Toggle Theme"
-              title={`Switch to ${theme === "indigo" ? "Green" : "Indigo"} Theme`}
+              title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
             >
-              <Palette className="h-4 w-4 text-accent-color" />
-              <span className="text-xs font-semibold capitalize hidden lg:inline">{theme}</span>
+              {theme === "dark" ? (
+                <Sun className="h-4 w-4 text-accent-color" />
+              ) : (
+                <Moon className="h-4 w-4 text-accent-color" />
+              )}
+              <span className="text-xs font-semibold capitalize hidden lg:inline">{theme} mode</span>
             </button>
 
             <Button
@@ -156,16 +160,20 @@ export default function Navigation() {
             {/* Mobile Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-xl border border-white/5 bg-white/5 text-slate-300 hover:text-white transition-all flex items-center justify-center cursor-pointer"
+              className="p-2 rounded-xl border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-all flex items-center justify-center cursor-pointer"
               aria-label="Toggle Theme"
             >
-              <Palette className="h-4.5 w-4.5 text-accent-color" />
+              {theme === "dark" ? (
+                <Sun className="h-4.5 w-4.5 text-accent-color" />
+              ) : (
+                <Moon className="h-4.5 w-4.5 text-accent-color" />
+              )}
             </button>
             
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-xl border border-white/5 bg-white/5 text-slate-300 hover:text-white transition-colors cursor-pointer"
+              className="p-2 rounded-xl border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors cursor-pointer"
             >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5" />
@@ -178,7 +186,7 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-3 p-4 rounded-xl border border-white/10 bg-slate-950/90 backdrop-blur-xl space-y-2 animate-in fade-in slide-in-from-top-5 duration-200">
+          <div className="md:hidden mt-3 p-4 rounded-xl border border-black/5 dark:border-white/10 bg-white/95 dark:bg-slate-950/90 backdrop-blur-xl space-y-2 animate-in fade-in slide-in-from-top-5 duration-200">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
               return (
@@ -187,8 +195,8 @@ export default function Navigation() {
                   onClick={() => scrollToSection(item.href)}
                   className={`block w-full text-left px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
                     isActive
-                      ? "text-white bg-primary/10 border-l-2 border-primary"
-                      : "text-slate-400 hover:text-white hover:bg-white/5"
+                      ? "text-slate-950 dark:text-white bg-primary/10 border-l-2 border-primary"
+                      : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
                   }`}
                 >
                   {item.name}
