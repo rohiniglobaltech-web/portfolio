@@ -27,7 +27,7 @@ const skillCategories = [
     id: "devops",
     title: "DevOps & Tools",
     icon: <Cloud className="h-5 w-5" />,
-    skills: ["Docker", "AWS", "CI/CD", "Git", "VS Code", "Postman", "Figma"]
+    skills: ["Docker", "AWS", "CI/CD", "Git"]
   }
 ];
 
